@@ -7,8 +7,9 @@
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
 
 ## 구현할 기능 목록
-- car : { 이름, 전진 횟수 }
+- car : { 이름, 이동 거리 }
   - 전진
+  - 전진할 수 있다면 전진, 그 외에는 아무 동작하지 않음
 - car factory
   - 이름 리스트를 주면 자동차 리스트 반환
 - view

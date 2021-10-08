@@ -9,8 +9,8 @@ public class CarTest {
 	@Test
 	void moveForward() {
 		Car car = new Car("name");
-		assertThat(car.getPosition()).isEqualTo(0);
+		assertThat(car.getMovingDistance()).isEqualTo(0);
 		car.moveForward();
-		assertThat(car.getPosition()).isEqualTo(1);
+		assertThat(car.getMovingDistance()).isEqualTo(1);
 	}
 }
