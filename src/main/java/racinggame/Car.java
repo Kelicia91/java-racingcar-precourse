@@ -6,6 +6,8 @@ import nextstep.utils.Randoms;
 
 class Car {
 
+	public static final int MOVING_DISTANCE_MIN = 0;
+
 	private static final int RANDOM_RANGE_MIN = 0;
 	private static final int RANDOM_RANGE_MAX = 9;
 	private static final int CAN_MOVE_FORWARD = 4;
@@ -16,7 +18,11 @@ class Car {
 
 	public Car(String name) {
 		this.name = name;
-		this.movingDistance = 0;
+		this.movingDistance = MOVING_DISTANCE_MIN;
+	}
+
+	public boolean isDistanceSame(int distance) {
+		return movingDistance == distance;
 	}
 
 	public void act() {
