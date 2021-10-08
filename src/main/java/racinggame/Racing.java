@@ -13,6 +13,7 @@ class Racing {
 	}
 
 	public WinningCars run(List<Car> cars, int numOfAttempts) {
+		view.outRunningResult();
 		for (int attempt = ATTEMPTS_MIN; attempt <= numOfAttempts; ++attempt) {
 			race(cars);
 		}
@@ -22,7 +23,7 @@ class Racing {
 	private void race(List<Car> cars) {
 		for (Car car : cars) {
 			car.act();
-			view.print(car);
+			view.outMovingCar(car);
 		}
 		view.space();
 	}
