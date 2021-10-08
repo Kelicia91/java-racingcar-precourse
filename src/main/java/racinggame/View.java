@@ -1,5 +1,7 @@
 package racinggame;
 
+import nextstep.utils.Console;
+
 public class View {
 
 	public static final String CAR_NAMES_DELIMITER = ",";
@@ -42,6 +44,24 @@ public class View {
 			stringBuilder.append(CAR_MOVING_DISTANCE_UNIT_VIEW);
 		}
 		return stringBuilder.toString();
+	}
+
+	public String inSafeInput() {
+		String input;
+		do {
+			input = input();
+		} while (null == input);
+		return input;
+	}
+
+	private String input() {
+		try {
+			return Console.readLine();
+		} catch (IllegalStateException e) {
+			// @note: NoSuchElementException 까지 잡았더니 ApplicationTest.낫싱() 테스트가 종료되지 않음
+			outError(e.getMessage());
+			return null;
+		}
 	}
 
 	private void println(String s) {
