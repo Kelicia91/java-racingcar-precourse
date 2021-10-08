@@ -6,6 +6,7 @@ import nextstep.utils.Randoms;
 
 class Car {
 
+	public static final int NAME_LENGTH_MAX = 5;
 	public static final int MOVING_DISTANCE_MIN = 0;
 
 	private static final int RANDOM_RANGE_MIN = 0;
