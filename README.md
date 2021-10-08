@@ -9,7 +9,7 @@
 ## 구현할 기능 목록
 - car : { 이름, 전진 횟수 }
   - 전진
-- car generator
+- car factory
   - 이름 리스트를 주면 자동차 리스트 반환
 - view
   - input
