@@ -38,7 +38,7 @@ class WinningCars {
 	}
 
 	private int getMaxMovingDistance(List<Car> cars) {
-		int max = Car.MOVING_DISTANCE_MIN;
+		int max = Integer.MIN_VALUE;
 		for (Car car : cars) {
 			max = Math.max(car.getMovingDistance(), max);
 		}

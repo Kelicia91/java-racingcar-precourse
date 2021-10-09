@@ -22,7 +22,7 @@ class Racing {
 
 	private void race(List<Car> cars) {
 		for (Car car : cars) {
-			car.act();
+			car.move();
 			view.outMovingCar(car);
 		}
 		view.space();

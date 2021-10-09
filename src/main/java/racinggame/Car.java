@@ -7,8 +7,8 @@ import nextstep.utils.Randoms;
 class Car {
 
 	public static final int NAME_LENGTH_MAX = 5;
-	public static final int MOVING_DISTANCE_MIN = 0;
 
+	private static final int MOVING_DISTANCE_MIN = 0;
 	private static final int RANDOM_RANGE_MIN = 0;
 	private static final int RANDOM_RANGE_MAX = 9;
 	private static final int CAN_MOVE_FORWARD = 4;
@@ -26,10 +26,15 @@ class Car {
 		return movingDistance == distance;
 	}
 
-	public void act() {
+	/**
+	 * 이동한 거리를 반환
+	 */
+	public int move() {
+		int movingDistance = getMovingDistance();
 		if (canMoveForward()) {
 			moveForward();
 		}
+		return getMovingDistance() - movingDistance;
 	}
 
 	private boolean canMoveForward() {
@@ -37,7 +42,7 @@ class Car {
 		return random >= CAN_MOVE_FORWARD;
 	}
 
-	public void moveForward() {
+	private void moveForward() {
 		this.movingDistance += HOW_MANY_DISTANCE_MOVE_FORWARD;
 	}
 
