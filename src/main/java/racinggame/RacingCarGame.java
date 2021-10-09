@@ -13,13 +13,7 @@ public class RacingCarGame {
 	}
 
 	public void run() {
-		List<Car> cars = createCars();
-		int numOfAttempts = inputNumOfAttempts();
-		view.space();
-
-		WinningCars winningCars = racing.run(cars, numOfAttempts);
-
-		view.outWinningCars(winningCars);
+		view.outWinningCars(racing.run(createCars()));
 	}
 
 	private List<Car> createCars() {
@@ -37,32 +31,6 @@ public class RacingCarGame {
 		} catch (IllegalArgumentException e) {
 			view.outError(e.getMessage());
 			return null;
-		}
-	}
-
-	private int inputNumOfAttempts() {
-		view.outInputNumOfAttempts();
-		Integer numOfAttempts;
-		do {
-			numOfAttempts = parseNumOfAttempts(view.inSafeInput());
-		} while (null == numOfAttempts);
-		return numOfAttempts;
-	}
-
-	private Integer parseNumOfAttempts(String s) {
-		try {
-			int numOfAttempts = Integer.parseInt(s);
-			validateNumOfAttempts(numOfAttempts);
-			return numOfAttempts;
-		} catch (IllegalArgumentException e) {
-			view.outError(e.getMessage());
-			return null;
-		}
-	}
-
-	private void validateNumOfAttempts(int numOfAttempts) {
-		if (numOfAttempts < Racing.ATTEMPTS_MIN) {
-			throw new IllegalArgumentException(Message.ERROR_INVALID_NUM_OF_ATTEMPTS.getContent());
 		}
 	}
 }

@@ -2,7 +2,7 @@ package racinggame;
 
 import nextstep.utils.Console;
 
-public class View {
+class View {
 
 	private static final char CAR_MOVING_DISTANCE_UNIT_VIEW = '-';
 
