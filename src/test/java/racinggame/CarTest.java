@@ -28,9 +28,7 @@ class CarTest extends NSTest {
 	void move(int random, int movingDistance) {
 		Car car = new Car("name");
 		assertThat(car.getMovingDistance()).isEqualTo(MOVING_DISTANCE_MIN);
-		assertRandomTest(() -> {
-			assertThat(car.move()).isEqualTo(movingDistance);
-		}, random);
+		assertRandomTest(() -> assertThat(car.move()).isEqualTo(movingDistance), random);
 	}
 
 	@Override
