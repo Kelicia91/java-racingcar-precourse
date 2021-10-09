@@ -27,18 +27,18 @@ class View {
 	}
 
 	public void outWinningCars(WinningCars winningCars) {
-		String winningCarNames = String.join(CarFactory.CAR_NAMES_DELIMITER, winningCars.getNames());
+		final String winningCarNames = String.join(CarFactory.CAR_NAMES_DELIMITER, winningCars.getNames());
 		println(String.format(Message.WINNING_CARS.getContent(), winningCarNames));
 	}
 
 	public void outMovingCar(Car car) {
-		println(String.format("%s : %s", car.getName(), formatMovingDistance(car)));
+		println(String.format(Message.CAR_NAME_MOVING_DISTANCE.getContent(), car.getName(), formatMovingDistance(car)));
 	}
 
 	private String formatMovingDistance(Car car) {
 		final int movingDistance = car.getMovingDistance();
-		StringBuilder stringBuilder = new StringBuilder();
-		for (int i = 0; i < movingDistance; ++i) {
+		final StringBuilder stringBuilder = new StringBuilder();
+		for (int i = Car.MOVING_DISTANCE_MIN; i < movingDistance; ++i) {
 			stringBuilder.append(CAR_MOVING_DISTANCE_UNIT_VIEW);
 		}
 		return stringBuilder.toString();

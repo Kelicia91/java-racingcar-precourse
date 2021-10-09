@@ -13,12 +13,9 @@ class Racing {
 	}
 
 	public WinningCars run(List<Car> cars) {
-		int numOfAttempts = inputNumOfAttempts();
+		final int numOfAttempts = inputNumOfAttempts();
 		view.space();
-		view.outRunningResult();
-		for (int attempt = ATTEMPTS_MIN; attempt <= numOfAttempts; ++attempt) {
-			race(cars);
-		}
+		race(numOfAttempts, cars);
 		return WinningCars.of(cars);
 	}
 
@@ -33,7 +30,7 @@ class Racing {
 
 	private int parseNumOfAttempts(String s) {
 		try {
-			int numOfAttempts = Integer.parseInt(s);
+			final int numOfAttempts = Integer.parseInt(s);
 			validateNumOfAttempts(numOfAttempts);
 			return numOfAttempts;
 		} catch (IllegalArgumentException e) {
@@ -48,7 +45,14 @@ class Racing {
 		}
 	}
 
-	private void race(List<Car> cars) {
+	private void race(int numOfAttempts, List<Car> cars) {
+		view.outRunningResult();
+		for (int attempt = ATTEMPTS_MIN; attempt <= numOfAttempts; ++attempt) {
+			move(cars);
+		}
+	}
+
+	private void move(List<Car> cars) {
 		for (Car car : cars) {
 			car.move();
 			view.outMovingCar(car);

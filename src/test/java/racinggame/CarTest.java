@@ -10,11 +10,9 @@ import nextstep.test.NSTest;
 
 class CarTest extends NSTest {
 
-	private static final int MOVING_DISTANCE_MIN = 0;
-
 	@Test
 	void tooLongName() {
-		String longName = "too much long name";
+		final String longName = "too much long name";
 		assertThat(longName.length()).isGreaterThan(Car.NAME_LENGTH_MAX);
 		assertThatExceptionOfType(IllegalArgumentException.class)
 			.isThrownBy(() -> new Car(longName));
@@ -26,8 +24,8 @@ class CarTest extends NSTest {
 		"0:0"  // NOT_MOVE:MOVING_DISTANCE_MIN
 	}, delimiter = ':')
 	void move(int random, int movingDistance) {
-		Car car = new Car("name");
-		assertThat(car.getMovingDistance()).isEqualTo(MOVING_DISTANCE_MIN);
+		final Car car = new Car("name");
+		assertThat(car.getMovingDistance()).isEqualTo(Car.MOVING_DISTANCE_MIN);
 		assertRandomTest(() -> assertThat(car.move()).isEqualTo(movingDistance), random);
 	}
 

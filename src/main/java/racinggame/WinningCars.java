@@ -17,7 +17,7 @@ class WinningCars {
 	}
 
 	public List<String> getNames() {
-		List<String> names = new ArrayList<>();
+		final List<String> names = new ArrayList<>();
 		for (Car car : winningCars) {
 			names.add(car.getName());
 		}
@@ -38,7 +38,7 @@ class WinningCars {
 	}
 
 	private int getMaxMovingDistance(List<Car> cars) {
-		int max = Integer.MIN_VALUE;
+		int max = Car.MOVING_DISTANCE_MIN;
 		for (Car car : cars) {
 			max = Math.max(car.getMovingDistance(), max);
 		}

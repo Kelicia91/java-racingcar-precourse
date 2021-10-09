@@ -8,13 +8,13 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-public class CarFactoryTest {
+class CarFactoryTest {
 
 	@Test
 	void build() {
-		List<String> names = Arrays.asList("alice", "bob", "eve");
-		List<Car> cars = CarFactory.build(String.join(CarFactory.CAR_NAMES_DELIMITER, names));
-		List<String> carNames = new ArrayList<>();
+		final List<String> names = Arrays.asList("alice", "bob", "eve");
+		final List<Car> cars = CarFactory.build(String.join(CarFactory.CAR_NAMES_DELIMITER, names));
+		final List<String> carNames = new ArrayList<>();
 		for (Car car : cars) {
 			carNames.add(car.getName());
 		}
