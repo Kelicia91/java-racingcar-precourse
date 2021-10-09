@@ -7,7 +7,7 @@ enum Message {
 	CAR_NAME_MOVING_DISTANCE("%s : %s"),
 	WINNING_CARS("최종 우승자는 %s 입니다."),
 	ERROR("[ERROR] %s"),
-	ERROR_INVALID_NUM_OF_ATTEMPTS(String.format("the number of attempts must be at least greater than %d", Racing.ATTEMPTS_MIN)),
+	ERROR_INVALID_NUM_OF_ATTEMPTS(String.format("the number of attempts must be equal to or greater than %d", Racing.ATTEMPTS_MIN)),
 	ERROR_INVALID_CAR_NAME(String.format("car name length must be %d or less", Car.NAME_LENGTH_MAX));
 
 	private final String content;
