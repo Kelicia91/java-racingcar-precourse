@@ -13,7 +13,7 @@ public class CarFactoryTest {
 	@Test
 	void build() {
 		List<String> names = Arrays.asList("alice", "bob", "eve");
-		List<Car> cars = CarFactory.build(names);
+		List<Car> cars = CarFactory.build(String.join(CarFactory.CAR_NAMES_DELIMITER, names));
 		List<String> carNames = new ArrayList<>();
 		for (Car car : cars) {
 			carNames.add(car.getName());

@@ -4,8 +4,6 @@ import nextstep.utils.Console;
 
 public class View {
 
-	public static final String CAR_NAMES_DELIMITER = ",";
-
 	private static final char CAR_MOVING_DISTANCE_UNIT_VIEW = '-';
 
 	public void space() {
@@ -16,8 +14,8 @@ public class View {
 		println(String.format(Message.ERROR.getContent(), message));
 	}
 
-	public void outInputRacingCars() {
-		println(Message.INPUT_RACING_CARS.getContent());
+	public void outInputRacingCarNames() {
+		println(Message.INPUT_RACING_CAR_NAMES.getContent());
 	}
 
 	public void outInputNumOfAttempts() {
@@ -29,7 +27,7 @@ public class View {
 	}
 
 	public void outWinningCars(WinningCars winningCars) {
-		String winningCarNames = String.join(CAR_NAMES_DELIMITER, winningCars.getNames());
+		String winningCarNames = String.join(CarFactory.CAR_NAMES_DELIMITER, winningCars.getNames());
 		println(String.format(Message.WINNING_CARS.getContent(), winningCarNames));
 	}
 

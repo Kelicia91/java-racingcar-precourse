@@ -1,6 +1,5 @@
 package racinggame;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class RacingCarGame {
@@ -14,50 +13,31 @@ public class RacingCarGame {
 	}
 
 	public void run() {
-		List<String> carNames = inputCarNames();
+		List<Car> cars = createCars();
 		int numOfAttempts = inputNumOfAttempts();
 		view.space();
 
-		List<Car> cars = createCars(carNames);
 		WinningCars winningCars = racing.run(cars, numOfAttempts);
 
 		view.outWinningCars(winningCars);
 	}
 
-	private List<String> inputCarNames() {
-		view.outInputRacingCars();
-		List<String> carNames;
+	private List<Car> createCars() {
+		List<Car> cars;
 		do {
-			carNames = parseCarNames(view.inSafeInput());
-		} while (null == carNames);
-		return carNames;
+			view.outInputRacingCarNames();
+			cars = createCars(view.inSafeInput());
+		} while (null == cars || cars.isEmpty());
+		return cars;
 	}
 
-	private List<String> parseCarNames(String input) {
+	private List<Car> createCars(String input) {
 		try {
-			List<String> names = Arrays.asList(input.split(View.CAR_NAMES_DELIMITER));
-			validateCarNames(names);
-			return names;
+			return CarFactory.build(input);
 		} catch (IllegalArgumentException e) {
 			view.outError(e.getMessage());
 			return null;
 		}
-	}
-
-	private void validateCarNames(List<String> carNames) {
-		for (String name : carNames) {
-			validateCarName(name);
-		}
-	}
-
-	private void validateCarName(String name) {
-		if (name.length() > Car.NAME_LENGTH_MAX) {
-			throw new IllegalArgumentException(Message.ERROR_INVALID_CAR_NAME.getContent());
-		}
-	}
-
-	private List<Car> createCars(List<String> names) {
-		return CarFactory.build(names);
 	}
 
 	private int inputNumOfAttempts() {
