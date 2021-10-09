@@ -18,6 +18,7 @@ class Car {
 	private int movingDistance;
 
 	public Car(String name) {
+		validateCarName(name);
 		this.name = name;
 		this.movingDistance = MOVING_DISTANCE_MIN;
 	}
@@ -44,6 +45,12 @@ class Car {
 
 	private void moveForward() {
 		this.movingDistance += HOW_MANY_DISTANCE_MOVE_FORWARD;
+	}
+
+	private void validateCarName(String name) {
+		if (name.length() > Car.NAME_LENGTH_MAX) {
+			throw new IllegalArgumentException(Message.ERROR_INVALID_CAR_NAME.getContent());
+		}
 	}
 
 	public String getName() {

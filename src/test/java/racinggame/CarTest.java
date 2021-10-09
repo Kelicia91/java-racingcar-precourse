@@ -2,6 +2,7 @@ package racinggame;
 
 import static org.assertj.core.api.Assertions.*;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -10,6 +11,14 @@ import nextstep.test.NSTest;
 class CarTest extends NSTest {
 
 	private static final int MOVING_DISTANCE_MIN = 0;
+
+	@Test
+	void tooLongName() {
+		String longName = "too much long name";
+		assertThat(longName.length()).isGreaterThan(Car.NAME_LENGTH_MAX);
+		assertThatExceptionOfType(IllegalArgumentException.class)
+			.isThrownBy(() -> new Car(longName));
+	}
 
 	@ParameterizedTest
 	@CsvSource(value = {
